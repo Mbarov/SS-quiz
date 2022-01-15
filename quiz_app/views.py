@@ -40,8 +40,9 @@ def questions(request, question):
     previous_number = int(question) - 1 #номер предыдущего вопроса
     if int(question) < length+1:
         question_object = Question.objects.get(uuid=question[-1])
+        count_correct_choices = question_object.choices.filter(is_correct=True).count()#Подсчет количества правильных вариантов ответа в вопросе
         next_number = int(question) + 1 #номер следующего вопроса
-        data = {'question_object':question_object, 'next_number': next_number, 'previous_number': previous_number}
+        data = {'question_object':question_object, 'next_number': next_number, 'previous_number': previous_number, 'count_correct_choices':count_correct_choices}
         return render(request, 'quiz_app/questions.html', data)
     else:
         all_answers = QuizResultService(Quiz, Answers)
