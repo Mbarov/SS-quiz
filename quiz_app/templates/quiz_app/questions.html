@@ -1,0 +1,23 @@
+{% extends 'quiz_app/include/base.html' %}
+
+{% block title %}
+вопросы
+{% endblock %}
+
+{% block content %}
+
+
+    {{question_object.text}}<br>
+    <form action="{% url 'questions' question=next_number %}" class='form'>
+        <ol type='A'>
+            {% for choice in question_object.choices.all%}
+                <li><input type='radio' name='abc' value={{choice.uuid}}>{{choice.text}}</li><br>
+            {% endfor %}
+        </ol><br>
+        {% if previous_number > 0 %}
+            <a href="{% url 'questions' question=previous_number %}">Предыдущий вопрос</a>
+        {% endif %}
+        <input type='submit' value='Следующий вопрос'>
+    </form> 
+
+{% endblock %}

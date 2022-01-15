@@ -1,0 +1,14 @@
+{% extends 'quiz_app/include/base.html' %}
+
+{% block title %}
+Результат
+{% endblock %}
+
+{% block content %}
+Тут ваш результат<br>
+
+
+{{result}}<br>
+
+<a href="{% url 'main' %}">Пройти тест заново</a>
+{% endblock %}
