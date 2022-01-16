@@ -10,11 +10,15 @@
     <form action="{% url 'questions' question=next_number %}" class='form'>
         <ol type='A'>
             {% for choice in question_object.choices.all%}
+            
                 {% if count_correct_choices > 1 %}
-                <li><input type='checkbox' name='abc' value={{choice.uuid}}>{{choice.text}}</li><br>
+                <li><input type='checkbox' name='abc[]' value={{choice.uuid}}>{{choice.text}}</li><br>
+                
                 {% else %}
-                <li><input type='radio' name='abc' value={{choice.uuid}}>{{choice.text}}</li><br>
-                {% endif %}            
+                
+                <li><input type='radio' name='abc[]' value={{choice.uuid}}>{{choice.text}}</li><br>
+                {% endif %}  
+
             {% endfor %}
         </ol><br>
         {% if previous_number > 0 %}
