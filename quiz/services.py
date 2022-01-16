@@ -14,8 +14,7 @@ class QuizResultService():
         questions_count = questions.count()
         for question in questions:
             answers_list = []
-            correct_choices_list = []
-            
+            correct_choices_list = []           
             for choice in question.choices.filter(is_correct=True):#выбор всех правильных вариантов ответа для выбранного вопроса
                 correct_choices_list.append(choice.uuid)
             answer_list = self.answers_dto.objects.get(quiz_uuid=1).answers.all()#список всех ответов пользователя
