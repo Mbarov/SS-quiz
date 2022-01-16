@@ -5,10 +5,24 @@
 {% endblock %}
 
 {% block content %}
-Тут ваш результат<br>
+<div class="pricing-header p-5 pb-md-4 mx-auto text-center jumbotron">
+    <p class="fs-1 mb-5">Результаты теста:</p><br>
+    {% if result == 1 %}
+    <p class="fs-3 mb-5">Поздравляем! Вы ответили правильно на все вопросы! Ваш балл:{{result}}</p><br>
+    {% elif result > 0.6%}
+    <p class="fs-3 mb-5">Очень неплохо! Вы ответили правильно на большинство вопросов! Ваш балл:{{result}}</p><br>
+    {% else %}
+    <p class="fs-3 mb-5">Вам нужно подучить теорию! Ваш балл:{{result}}</p><br>  
+    {% endif %}
+    <a href="{% url 'main' %}">
+        <button type='button' id='button' class='btn btn-lg btn-block  data-toggletext-white'>
+            Пройти тест заново
+        </button>
+    </a>
+    
+    
+</div>
 
 
-{{result}}<br>
 
-<a href="{% url 'main' %}">Пройти тест заново</a>
 {% endblock %}

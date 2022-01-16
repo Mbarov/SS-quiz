@@ -5,26 +5,39 @@
 {% endblock %}
 
 {% block content %}
-
-    {{question_object.text}}<br>
+<div class="pricing-header p-5 pb-md-4 mx-auto text-center jumbotron">
+    <p class="fs-3">Вопрос №{{question_object.uuid}}
+    <p class="fs-3">{{question_object.text}}</p><br>
     <form action="{% url 'questions' question=next_number %}" class='form'>
         <ol type='A'>
             {% for choice in question_object.choices.all%}
             
                 {% if count_correct_choices > 1 %}
-                <li><input type='checkbox' name='abc[]' value={{choice.uuid}}>{{choice.text}}</li><br>
+                <label for={{choice.uuid}}><input type='checkbox' id={{choice.uuid}} name='abc[]' value={{choice.uuid}}><li><p class="fs-5">{{choice.text}}</p></li></label><br>
                 
                 {% else %}
                 
-                <li><input type='radio' name='abc[]' value={{choice.uuid}}>{{choice.text}}</li><br>
+                <label for={{choice.uuid}}><input type='radio' id={{choice.uuid}} name='abc[]' value={{choice.uuid}}><li><p class="fs-5 ">{{choice.text}}</p></li></label><br>
                 {% endif %}  
 
             {% endfor %}
         </ol><br>
-        {% if previous_number > 0 %}
-            <a href="{% url 'questions' question=previous_number %}">Предыдущий вопрос</a>
-        {% endif %}
-        <input type='submit' value='Следующий вопрос'>
-    </form> 
+        <div class="row">
+            <div class="col-6">
+                {% if previous_number > 0 %}
+                    <a href="{% url 'questions' question=previous_number %}">
+                        <button type='button' id='button2' class='btn  btn-lg btn-block  data-toggletext-white'>
+                            Предыдущий вопрос
+                        </button>
+                    </a>
+                {% endif %}
+            </div>
+        
+            <div class="col-6">
+                <button type='submit' id='button' class='btn  btn-lg btn-block data-toggletext-white'>Следующий вопрос</button>
+            </div>
 
+        </div>
+    </form> 
+</div>
 {% endblock %}

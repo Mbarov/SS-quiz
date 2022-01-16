@@ -1,0 +1,54 @@
+#button {
+    background-color:rgb(221, 122, 41);
+    width: 100%;
+
+}
+#button2 {
+    width: 100%;
+    background-color:#d33434
+}
+body {
+    background-color:rgb(36,42,64);
+    font-family: 'Poppins',  sans-serif ;
+    color: rgb(253, 253, 253);
+    letter-spacing:2px;
+    font-stretch: expanded ;
+    font-weight: 100px;
+}
+li{
+    border: 1px solid rgb(0, 0, 0);
+    padding: 5px;
+    margin: 10px;
+    border-radius: 20px;
+    background-color: white;   
+    color: black ;
+    width: 100%;
+    list-style-type: none;
+}
+
+label{
+    width: 100%;
+}
+input{
+    display: none;
+}
+
+:checked + li{
+    background-color: #f14848;
+    color: white;
+   }
+
+a {
+    text-decoration: none !important;
+}
+li:hover {
+    background-color: #d33434 !important;   
+    color:white !important;
+    text-decoration: none;
+    /*выделение при наведении мышкой*/
+
+}
+.jumbotron {
+    width: 70%;
+    margin-top: 80px;
+}
